@@ -1,0 +1,621 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Share+Tech+Mono&family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --bg-color: #050505;
+    --second-bg-color: #101010;
+    --text-color: #ffffff;
+    --main-color: #00ff88;
+    /* Neon Green */
+    --accent-color: #bc13fe;
+    /* Cyber Purple */
+    --font-primary: 'Share Tech Mono', monospace;
+    --font-secondary: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: var(--font-secondary);
+    /* Switch to readable font by default */
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    cursor: none;
+    /* Deep Radial Gradient for depth + Tech Grid */
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(76, 0, 94, 0.4) 0%, rgba(5, 5, 5, 1) 100%),
+        linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+    background-attachment: fixed;
+    /* Keep background static while scrolling */
+}
+
+/* Typography Overrides */
+h1,
+h2,
+h3,
+h4,
+.logo {
+    font-family: var(--font-primary);
+}
+
+/* Custom Cursor */
+.cursor-dot,
+.cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--main-color);
+    box-shadow: 0 0 10px var(--main-color), 0 0 20px var(--accent-color);
+}
+
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--main-color);
+    transition: width 0.1s, height 0.1s, background-color 0.1s;
+}
+
+section {
+    min-height: 100vh;
+    padding: 10rem 9% 2rem;
+}
+
+/* Gradient Text Function */
+.gradient-text,
+span,
+.logo {
+    background: linear-gradient(45deg, var(--main-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+    /* Reset shadow for gradient text */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 9%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(188, 19, 254, 0.2);
+}
+
+.logo {
+    font-size: 2.8rem;
+    font-weight: 600;
+    cursor: default;
+}
+
+.navbar a {
+    font-size: 1.7rem;
+    color: var(--text-color);
+    margin-left: 4rem;
+    transition: .3s;
+    font-weight: 500;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--main-color);
+    background: linear-gradient(45deg, var(--main-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#menu-icon {
+    font-size: 3.6rem;
+    color: var(--text-color);
+    display: none;
+}
+
+/* Home Section */
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-content h3 {
+    font-size: 3.2rem;
+    font-weight: 700;
+}
+
+.home-content h1 {
+    font-size: 6rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 1rem 0;
+}
+
+.home-content p {
+    font-size: 1.6rem;
+    margin: 2rem 0 4rem;
+    line-height: 1.8;
+}
+
+.social-media a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    background: transparent;
+    border: .2rem solid var(--main-color);
+    border-radius: 50%;
+    font-size: 2.2rem;
+    color: var(--main-color);
+    margin: 3rem 1.5rem 3rem 0;
+    transition: .5s ease;
+}
+
+.social-media a:hover {
+    background: linear-gradient(45deg, var(--main-color), var(--accent-color));
+    border-color: transparent;
+    color: var(--bg-color);
+    box-shadow: 0 0 20px var(--accent-color);
+    transform: translateY(-5px);
+}
+
+.btn {
+    display: inline-block;
+    padding: 1.2rem 3.5rem;
+    background: linear-gradient(45deg, var(--main-color), var(--accent-color));
+    border-radius: 4rem;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+    font-size: 1.6rem;
+    color: var(--bg-color);
+    letter-spacing: .1rem;
+    font-weight: 600;
+    transition: .5s ease;
+}
+
+.btn:hover {
+    box-shadow: 0 0 30px rgba(188, 19, 254, 0.6);
+    transform: scale(1.05);
+}
+
+.home-img img {
+    width: 35vw;
+    animation: floatImage 4s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-2.4rem);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* About Section */
+.about {
+    background: var(--second-bg-color);
+    background: linear-gradient(to bottom, var(--bg-color), var(--second-bg-color));
+}
+
+.heading {
+    text-align: center;
+    font-size: 5rem;
+    margin-bottom: 3rem;
+}
+
+.about-content h2 {
+    text-align: left;
+    line-height: 1.2;
+}
+
+.about-content h3 {
+    font-size: 2.6rem;
+    margin-bottom: 2rem;
+}
+
+.about-content p {
+    font-size: 1.7rem;
+    margin: 2rem 0 3rem;
+    line-height: 1.8;
+}
+
+/* Skills Section - Glassmorphism */
+.skills h2 {
+    margin-bottom: 5rem;
+}
+
+.skills-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.skill-box {
+    flex: 1 1 30rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 3rem 2rem 4rem;
+    border-radius: 2rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: .5s ease;
+    backdrop-filter: blur(10px);
+}
+
+.skill-box:hover {
+    border-color: var(--main-color);
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.skill-box i {
+    font-size: 7rem;
+    background: linear-gradient(45deg, var(--main-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.skill-box h3 {
+    font-size: 2.6rem;
+    margin: 1.5rem 0;
+    color: var(--text-color);
+}
+
+.skill-box p {
+    font-size: 1.6rem;
+    color: #ccc;
+}
+
+/* Projects Section - Distinct Background */
+.projects {
+    /* Vibrant Cyber Blue/Purple Gradient */
+    background: linear-gradient(135deg, #050505 0%, #1a0b2e 100%);
+    position: relative;
+    z-index: 1;
+}
+
+.projects::before {
+    /* decorative glow */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(188, 19, 254, 0.1) 0%, transparent 70%);
+    z-index: -1;
+}
+
+.projects h2 {
+    margin-bottom: 4rem;
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Responsive grid */
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.project-box {
+    position: relative;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem var(--bg-color);
+    overflow: hidden;
+    display: flex;
+    height: 300px;
+    background: rgba(25, 25, 25, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-box i:first-child {
+    font-size: 12rem;
+    color: rgba(255, 255, 255, 0.03);
+    /* Subtle backdrop icon */
+}
+
+.project-layer {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), var(--accent-color));
+    /* Purple tint */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 4rem;
+    transform: translateY(100%);
+    transition: transform .5s ease;
+}
+
+.project-box:hover .project-layer {
+    transform: translateY(0);
+}
+
+.project-layer h4 {
+    font-size: 3rem;
+    color: #fff;
+}
+
+.project-layer p {
+    font-size: 1.6rem;
+    margin: 1rem 0 2rem;
+    color: #e0e0e0;
+}
+
+.project-layer a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 5rem;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.project-layer a i {
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+/* Contact Section */
+.contact form {
+    max-width: 70rem;
+    margin: 1rem auto;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.contact form .input-box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contact form .input-box input,
+.contact form textarea {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: .8rem;
+    margin: .7rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: .3s;
+}
+
+.contact form .input-box input {
+    width: 49%;
+}
+
+.contact form .input-box input:focus,
+.contact form textarea:focus {
+    border-color: var(--main-color);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.contact form textarea {
+    resize: none;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2rem 9%;
+    background: var(--second-bg-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-iconTop a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: .8rem;
+    background: linear-gradient(45deg, var(--main-color), var(--accent-color));
+    border-radius: .8rem;
+    transition: .5s ease;
+}
+
+.footer-iconTop a i {
+    font-size: 2.4rem;
+    color: var(--bg-color);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    #menu-icon {
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 3%;
+        background: rgba(5, 5, 5, 0.95);
+        /* Solid dark for mobile menu */
+        border-top: .1rem solid rgba(0, 0, 0, .2);
+        display: none;
+    }
+}
+
+/* Glitch Effect Settings */
+.glitch {
+    position: relative;
+    color: var(--text-color);
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.glitch::before {
+    color: #ff00c1;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch 5s infinite;
+    z-index: -1;
+}
+
+.glitch::after {
+    color: #00fff9;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch 5s infinite reverse;
+    z-index: -2;
+}
+
+@keyframes glitch {
+    0% {
+        clip: rect(42px, 9999px, 44px, 0);
+        transform: skew(0.3deg);
+    }
+
+    5% {
+        clip: rect(12px, 9999px, 59px, 0);
+        transform: skew(0.3deg);
+    }
+
+    10% {
+        clip: rect(48px, 9999px, 29px, 0);
+        transform: skew(0.3deg);
+    }
+
+    15% {
+        clip: rect(42px, 9999px, 73px, 0);
+        transform: skew(0.3deg);
+    }
+
+    20% {
+        clip: rect(63px, 9999px, 27px, 0);
+        transform: skew(0.3deg);
+    }
+
+    25% {
+        clip: rect(34px, 9999px, 55px, 0);
+        transform: skew(0.3deg);
+    }
+
+    30% {
+        clip: rect(86px, 9999px, 73px, 0);
+        transform: skew(0.3deg);
+    }
+
+    35% {
+        clip: rect(20px, 9999px, 20px, 0);
+        transform: skew(0.3deg);
+    }
+
+    40% {
+        clip: rect(26px, 9999px, 60px, 0);
+        transform: skew(0.3deg);
+    }
+
+    45% {
+        clip: rect(25px, 9999px, 66px, 0);
+        transform: skew(0.3deg);
+    }
+
+    50% {
+        clip: rect(57px, 9999px, 98px, 0);
+        transform: skew(0.3deg);
+    }
+
+    55% {
+        clip: rect(5px, 9999px, 46px, 0);
+        transform: skew(0.3deg);
+    }
+
+    60% {
+        clip: rect(82px, 9999px, 31px, 0);
+        transform: skew(0.3deg);
+    }
+
+    65% {
+        clip: rect(54px, 9999px, 27px, 0);
+        transform: skew(0.3deg);
+    }
+
+    70% {
+        clip: rect(28px, 9999px, 99px, 0);
+        transform: skew(0.3deg);
+    }
+
+    75% {
+        clip: rect(45px, 9999px, 69px, 0);
+        transform: skew(0.3deg);
+    }
+
+    80% {
+        clip: rect(23px, 9999px, 85px, 0);
+        transform: skew(0.3deg);
+    }
+
+    85% {
+        clip: rect(54px, 9999px, 84px, 0);
+        transform: skew(0.3deg);
+    }
+
+    90% {
+        clip: rect(45px, 9999px, 47px, 0);
+        transform: skew(0.3deg);
+    }
+
+    95% {
+        clip: rect(37px, 9999px, 20px, 0);
+        transform: skew(0.3deg);
+    }
+
+    100% {
+        clip: rect(4px, 9999px, 91px, 0);
+        transform: skew(0.3deg);
+    }
+}
